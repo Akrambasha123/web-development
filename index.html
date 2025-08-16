@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Documentation Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #10b981;
+      --accent: #ef4444;
+      --light: #f8fafc;
+      --dark: #0f172a;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+      --text: #1e293b;
+      --border-radius: 8px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--light);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Layout */
+    .app-container { display: flex; min-height: 100vh; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: #fff;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      border-right: 1px solid var(--light-gray);
+    }
+
+    .sidebar-header {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--light-gray);
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .sidebar-header i { color: var(--primary); font-size: 1.5rem; }
+    .sidebar-header h2 { font-size: 1.25rem; font-weight: 600; color: var(--dark); }
+
+    .sidebar-nav { list-style: none; padding: 0; margin: 0; }
+    .sidebar-nav li { margin-bottom: .5rem; }
+    .sidebar-nav a {
+      color: var(--gray);
+      text-decoration: none;
+      padding: .75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    .sidebar-nav a:hover { background: #f1f5f9; color: var(--primary); }
+    .sidebar-nav a.active { background: #eff6ff; color: var(--primary); }
+
+    /* Main */
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after, header::before {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+    }
+    header::after { top: -50px; right: -50px; width: 200px; height: 200px; }
+    header::before { bottom: -80px; left: -80px; width: 250px; height: 250px; }
+    h1 { margin: 0 0 .5rem; font-size: 2rem; font-weight: 700; }
+    header p { opacity: .9; font-size: 1.1rem; }
+
+    /* Cards */
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--light-gray);
+      transition: var(--transition);
+      overflow: hidden;
+    }
+    .card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+    .card-img-container { height: 160px; overflow: hidden; position: relative; }
+    .card img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+    .card:hover img { transform: scale(1.03); }
+
+    .card-badge {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      background: var(--primary); color: #fff;
+      padding: .25rem .75rem;
+      border-radius: 20px;
+      font-size: .75rem; font-weight: 600;
+    }
+
+    .card-content { padding: 1.5rem; }
+    .card h2 { margin: 0 0 .75rem; font-size: 1.25rem; font-weight: 600; color: var(--dark); }
+    .card p { margin: 0 0 1.5rem; color: var(--gray); font-size: .95rem; }
+    .card-link {
+      display: inline-flex; align-items: center;
+      color: var(--primary); text-decoration: none;
+      font-weight: 500; font-size: .95rem;
+      transition: var(--transition);
+    }
+    .card-link:hover { color: var(--primary-dark); }
+    .card-link i { margin-left: .5rem; transition: var(--transition); }
+    .card-link:hover i { transform: translateX(3px); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .app-container { flex-direction: column; }
+      .sidebar { width: 100%; padding: 1rem; }
+      .sidebar-nav { display: flex; gap: .5rem; overflow-x: auto; }
+      .sidebar-nav li { margin: 0; white-space: nowrap; }
+      .main-content { padding: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      header { padding: 1.5rem; }
+      .cards-container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-code"></i>
+        <h2>Web Development</h2>
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="day1.html" class="nav-link"><i class="fas fa-tags"></i> Day 1</a></li>
+        <li><a href="day2.html" class="nav-link"><i class="fas fa-tags"></i> Day 2</a></li>
+        <li><a href="day3.html" class="nav-link"><i class="fas fa-tags"></i> Day 3</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main -->
+    <main class="main-content">
+      <header>
+        <h1>Web Development Documentation Hub</h1>
+        <p>Learn full-stack web development with step-by-step lessons, examples, and interactive projects</p>
+      </header>
+
+      <!-- Cards -->
+      <div class="cards-container">
+        <!-- Day 1 -->
+        <div class="card">
+          <div class="card-img-container">
+            <span class="card-badge">Beginner</span>
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="HTML Basics">
+          </div>
+          <div class="card-content">
+            <h2>Day 1: Tags, Attributes & Input Types</h2>
+            <p>Understand HTML tags, explore different attributes, and get hands-on with input types for forms.</p>
+            <a href="day1.html" class="card-link">Start Learning <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="card">
+          <div class="card-img-container">
+            <span class="card-badge">Beginner</span>
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="HTML Forms">
+          </div>
+          <div class="card-content">
+            <h2>Day 2: Attributes, Lists, Tables & Forms</h2>
+            <p>Dive deeper into HTML attributes, learn how to build lists and tables, and practice form handling with multiple input types.</p>
+            <a href="day2.html" class="card-link">Start Learning <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="card">
+          <div class="card-img-container">
+            <span class="card-badge">Beginner</span>
+            <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="HTML Multimedia and Semantics">
+          </div>
+          <div class="card-content">
+            <h2>Day 3: Multimedia & Semantic HTML</h2>
+            <p>Learn how to use images, audio, and video in web pages while exploring semantic HTML tags like header, footer, article, and section for better structure.</p>
+            <a href="#" class="card-link">Coming Soon <i class="fas fa-lock"></i></a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
