@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Comprehensive Guide</title>
+  <style>
+    :root {
+      --primary: #3498db;
+      --secondary: #2ecc71;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --text: #333;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background-color: #f9f9f9;
+    }
+    
+    header {
+      background-color: var(--dark);
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin: 25px 0;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    
+    h2 {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+      padding-bottom: 8px;
+      margin-top: 40px;
+      font-size: 1.8em;
+    }
+    
+    h3 {
+      color: var(--dark);
+      margin-top: 30px;
+      font-size: 1.4em;
+    }
+    
+    nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      background-color: rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
+    
+    nav a:hover {
+      background-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    section {
+      background-color: white;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: var(--accent);
+      font-size: 0.95em;
+    }
+    
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      border-left: 4px solid var(--primary);
+    }
+    
+    img {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 5px;
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .tag-description {
+      background-color: #f8f9fa;
+      border-left: 4px solid var(--primary);
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .example-container {
+      background-color: #f0f8ff;
+      border: 1px solid #d0e3ff;
+      border-radius: 6px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .tag-name {
+      font-weight: bold;
+      color: var(--accent);
+    }
+    
+    .text-examples {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .text-example {
+      background-color: white;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    form {
+      background-color: #f5f5f5;
+      padding: 25px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+    
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    
+    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]):not([type="button"]),
+    select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    input[type="submit"], input[type="reset"], input[type="button"] {
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-right: 10px;
+      transition: background-color 0.3s;
+    }
+    
+    input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
+      background-color: #2980b9;
+    }
+    
+    small {
+      display: block;
+      margin-top: -10px;
+      margin-bottom: 15px;
+      color: #666;
+      font-size: 0.9em;
+    }
+    
+    footer {
+      text-align: center;
+      margin: 40px 0;
+      padding: 20px;
+      background-color: var(--dark);
+      color: white;
+      border-radius: 8px;
+    }
+    
+    footer a {
+      color: #4a9cff;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 0 10px;
+      }
+      
+      header {
+        padding: 20px 10px;
+      }
+      
+      section {
+        padding: 15px;
+      }
+      
+      .text-examples {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HTML Comprehensive Guide</h1>
+    <p>Tags, Attributes, and Input Types</p>
+    <nav>
+      <a href="#structure">Document Structure</a>
+      <a href="#images">Images</a>
+      <a href="#text">Text Formatting</a>
+      <a href="#links">Links</a>
+      <a href="#forms">Forms & Dates</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Document Structure -->
+    <section id="structure">
+      <h2>Document Structure Tags</h2>
+      <div class="tag-description">
+        <p>These tags form the backbone of every HTML document, defining its structure and organization.</p>
+      </div>
+      
+      <h3>Basic Structure Tags</h3>
+      <div class="example-container">
+        <p><span class="tag-name">&lt;!DOCTYPE html&gt;</span>: Declares the document type and HTML version (HTML5 in this case).</p>
+        <p><span class="tag-name">&lt;html&gt;</span>: The root element that wraps all content on the page.</p>
+        <p><span class="tag-name">&lt;head&gt;</span>: Contains meta-information about the document (not displayed on the page).</p>
+        <p><span class="tag-name">&lt;meta&gt;</span>: Provides metadata like character set, viewport settings, and more.</p>
+        <p><span class="tag-name">&lt;link&gt;</span>: Connects external resources like CSS files to the document.</p>
+      </div>
+      
+      <h3>Headings Hierarchy</h3>
+      <div class="example-container">
+        <p>Headings create a document outline and should be used in order from h1 to h6:</p>
+        <h1>Heading Level 1 (Main title)</h1>
+        <h2>Heading Level 2 (Section title)</h2>
+        <h3>Heading Level 3 (Sub-section)</h3>
+        <h4>Heading Level 4</h4>
+        <h5>Heading Level 5</h5>
+        <h6>Heading Level 6</h6>
+      </div>
+      
+      <h3>Content Organization</h3>
+      <div class="example-container">
+        <p><span class="tag-name">&lt;p&gt;</span>: Defines a paragraph of text.</p>
+        <p>This is a paragraph created with &lt;p&gt; tag. Paragraphs automatically have spacing before and after them.</p>
+        
+        <p><span class="tag-name">&lt;div&gt;</span>: A block-level container for grouping elements.</p>
+        <div style="background-color: #e8f4f8; padding: 10px; margin: 10px 0;">
+          <h4>About Us Section</h4>
+          <p>This content is grouped together in a div for styling or scripting purposes.</p>
+        </div>
+        
+        <p><span class="tag-name">&lt;span&gt;</span>: An inline container for styling or scripting.</p>
+        <p>This sentence contains <span style="color: red;">a span element</span> that can be styled differently.</p>
+        
+        <p><span class="tag-name">&lt;br&gt;</span>: Creates a line break within text.</p>
+        <p>First line<br>Second line after a line break</p>
+        
+        <p><span class="tag-name">&lt;hr&gt;</span>: Creates a thematic break (horizontal rule).</p>
+        <hr>
+        <p>Content after the horizontal rule</p>
+      </div>
+    </section>
+
+    <!-- Images -->
+    <section id="images">
+      <h2>Image Tag</h2>
+      <div class="tag-description">
+        <p>The <span class="tag-name">&lt;img&gt;</span> tag embeds images in the document. It's a self-closing tag with several important attributes:</p>
+        <ul>
+          <li><strong>src</strong>: Specifies the image path (required)</li>
+          <li><strong>alt</strong>: Provides alternative text for accessibility (required)</li>
+          <li><strong>width</strong>/<strong>height</strong>: Sets display dimensions</li>
+          <li><strong>border</strong>: Defines image border (though CSS is preferred)</li>
+        </ul>
+      </div>
+      
+      <div class="example-container">
+        <h3>Image Example</h3>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*pzbYin_gqDNVjOSLQs06NQ.jpeg" alt="Sample HTML image" style="border: 2px solid #3498db;">
+        <p>This image uses all the essential attributes and displays an HTML-related image.</p>
+      </div>
+    </section>
+
+    <!-- Text Formatting -->
+    <section id="text">
+      <h2>Text Formatting Tags</h2>
+      <div class="tag-description">
+        <p>HTML provides semantic tags for text formatting to add meaning and structure to your content.</p>
+      </div>
+      
+      <div class="text-examples">
+        <div class="text-example">
+          <p><span class="tag-name">&lt;i&gt;</span>: <i>Italic text</i> - typically used for technical terms, foreign phrases, etc.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;b&gt;</span>: <b>Bold text</b> - for stylistic offset without importance.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;strong&gt;</span>: <strong>Strong importance</strong> - indicates content with strong importance.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;em&gt;</span>: <em>Emphasized text</em> - adds verbal stress emphasis when read.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;sub&gt;</span>: Subscript - H<sub>2</sub>O (water molecule).</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;sup&gt;</span>: Superscript - 2<sup>3</sup> = 8 (exponent).</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;small&gt;</span>: <small>Small print</small> - for side comments or fine print.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;del&gt;</span>: <del>Deleted text</del> - indicates removed content.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;address&gt;</span>: <address>Contact: 123 Web St.</address> - for contact information.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;abbr&gt;</span>: <abbr title="HyperText Markup Language">HTML</abbr> - for abbreviations with title attribute showing full text.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;code&gt;</span>: <code>console.log("Hello");</code> - for code snippets.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;mark&gt;</span>: <mark>Highlighted text</mark> - for marked/highlighted content.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;ins&gt;</span>: <ins>Inserted text</ins> - indicates added content.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;blockquote&gt;</span>:</p>
+          <blockquote>This is a longer quotation from an external source that appears as a block element.</blockquote>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;q&gt;</span>: <q>Short inline quote</q> - for short quotations.</p>
+        </div>
+        
+        <div class="text-example">
+          <p><span class="tag-name">&lt;cite&gt;</span>: <cite>The Art of HTML</cite> - for titles of creative works.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section id="links">
+      <h2>Anchor Tag (Links)</h2>
+      <div class="tag-description">
+        <p>The <span class="tag-name">&lt;a&gt;</span> tag creates hyperlinks with several important attributes:</p>
+        <ul>
+          <li><strong>href</strong>: Specifies the link destination (URL or fragment)</li>
+          <li><strong>target</strong>: Controls where the link opens (_blank for new tab)</li>
+          <li><strong>download</strong>: Indicates the link should download the resource</li>
+          <li><strong>title</strong>: Provides additional information on hover</li>
+        </ul>
+      </div>
+      
+      <div class="example-container">
+        <h3>Link Examples</h3>
+        <p><strong>External link</strong> (opens in new tab): 
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer">Visit Example.com</a></p>
+        
+        <p><strong>Internal link</strong> (jumps to section on page): 
+          <a href="#structure">Go to Document Structure</a></p>
+        
+        <p><strong>Download link</strong>: 
+          <a href="#" download="sample.pdf">Download Sample PDF</a> (Note: This is a placeholder)</p>
+        
+        <p><strong>Email link</strong>: 
+          <a href="mailto:contact@example.com">Email Us</a></p>
+        
+        <p><strong>Phone link</strong>: 
+          <a href="tel:+1234567890">Call Us</a></p>
+      </div>
+    </section>
+
+    <!-- Forms with Date Inputs -->
+    <section id="forms">
+      <h2>Forms and Date Input Types</h2>
+      <div class="tag-description">
+        <p>HTML forms collect user input. The <span class="tag-name">&lt;input&gt;</span> element has various types for different data, including several for dates and times.</p>
+      </div>
+      
+      <div class="example-container">
+        <h3>Date-Related Input Types</h3>
+        <form>
+          <label for="bday">Birthday (date):</label>
+          <input type="date" id="bday" name="bday" value="2025-08-14" required>
+          <small>Selects a date (year, month, day)</small>
+          
+          <label for="event">Event Date & Time (datetime-local):</label>
+          <input type="datetime-local" id="event" name="event" value="2025-08-14T20:00">
+          <small>Selects a local date and time (no timezone)</small>
+          
+          <label for="month">Start Month (month):</label>
+          <input type="month" id="month" name="month" value="2025-08">
+          <small>Selects a year and month</small>
+          
+          <label for="week">Plan Week (week):</label>
+          <input type="week" id="week" name="week" value="2025-W33">
+          <small>Selects a week number and year</small>
+          
+          <label for="time">Meeting Time (time):</label>
+          <input type="time" id="time" name="time" value="20:00">
+          <small>Selects a time (hours and minutes)</small>
+          
+          <input type="submit" value="Submit Form">
+        </form>
+        
+        <h3>Other Common Input Types</h3>
+        <p>Forms can also include:</p>
+        <ul>
+          <li>Text inputs (text, password, email, etc.)</li>
+          <li>Selection inputs (radio buttons, checkboxes)</li>
+          <li>File uploads (file type)</li>
+          <li>Range sliders (range type)</li>
+          <li>Color pickers (color type)</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>HTML Comprehensive Guide &copy; 2025</p>
+    <address>
+      Created for educational purposes | 
+      <a href="mailto:a.akrambasha123@gmail.com">a.akrambasha123@gmail.com</a>
+    </address>
+  </footer>
+</body>
+</html>
