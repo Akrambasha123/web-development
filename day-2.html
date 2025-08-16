@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Comprehensive Guide: Attributes, Lists, Tables & Forms</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background-color: #f9f9f9;
+    }
+    
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin: 25px 0;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    
+    h2 {
+      color: var(--secondary);
+      border-bottom: 3px solid var(--secondary);
+      padding-bottom: 8px;
+      margin-top: 40px;
+      font-size: 1.8em;
+    }
+    
+    h3 {
+      color: var(--dark);
+      margin-top: 30px;
+      font-size: 1.4em;
+    }
+    
+    nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      background-color: rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
+    
+    nav a:hover {
+      background-color: var(--secondary);
+      transform: translateY(-2px);
+    }
+    
+    section {
+      background-color: white;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: var(--accent);
+      font-size: 0.95em;
+    }
+    
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      border-left: 4px solid var(--secondary);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background-color: var(--secondary);
+      color: white;
+      font-weight: bold;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    
+    tr:hover {
+      background-color: #e9e9e9;
+    }
+    
+    .note {
+      background-color: #e7f4ff;
+      border-left: 4px solid var(--secondary);
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .example {
+      background-color: #f0f8ff;
+      border: 1px solid #d0e3ff;
+      border-radius: 6px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .example-title {
+      color: var(--secondary);
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .example-title::before {
+      content: "🛠️";
+      margin-right: 10px;
+    }
+    
+    .output {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+    
+    .output-title {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    
+    form {
+      background-color: #f5f5f5;
+      padding: 25px;
+      border-radius: 8px;
+      margin: 25px 0;
+    }
+    
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    
+    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]):not([type="button"]),
+    select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    input[type="submit"], input[type="reset"], input[type="button"] {
+      background-color: var(--secondary);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-right: 10px;
+      transition: background-color 0.3s;
+    }
+    
+    input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
+      background-color: #2980b9;
+    }
+    
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .input-item {
+      background-color: white;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    footer {
+      text-align: center;
+      margin: 40px 0;
+      padding: 20px;
+      background-color: var(--dark);
+      color: white;
+      border-radius: 8px;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 0 10px;
+      }
+      
+      header {
+        padding: 20px 10px;
+      }
+      
+      section {
+        padding: 15px;
+      }
+      
+      .input-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HTML Comprehensive Guide</h1>
+    <p>Attributes, Lists, Tables, Forms & Input Types</p>
+    <a href="index.html">Back to Hub</a>
+    <nav>
+      <a href="#attributes">Attributes</a>
+      <a href="#lists">Lists</a>
+      <a href="#tables">Tables</a>
+      <a href="#forms">Forms</a>
+      <a href="#inputs">Input Types</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Attributes Section -->
+    <section id="attributes">
+      <h2>HTML Attributes</h2>
+      <div class="note">
+        <p>Attributes are key-value pairs in opening tags (e.g., <code>name="value"</code>) that customize tag behavior. They provide extra information like IDs, classes, or sources.</p>
+      </div>
+      
+      <h3>Key Concepts</h3>
+      <ul>
+        <li><strong>Global attributes</strong> (e.g., <code>id</code>, <code>class</code>) work on any tag</li>
+        <li><strong>Specific attributes</strong> (e.g., <code>href</code> for <code>&lt;a&gt;</code>) are unique to certain tags</li>
+        <li>They improve functionality, accessibility, and styling</li>
+      </ul>
+      
+      <h3>Detailed Explanation</h3>
+      <div class="example">
+        <div class="example-title">Purpose</div>
+        <p>Attributes modify default behavior (e.g., set image size) or add features (e.g., require input fields).</p>
+        
+        <div class="example-title">Syntax</div>
+        <p>Attributes always use quotes and can have multiple per tag:</p>
+        <pre><code>&lt;img src="photo.jpg" alt="Description" width="200" height="150"&gt;</code></pre>
+        
+        <div class="example-title">Common Global Attributes</div>
+        <ul>
+          <li><code>id</code> - Unique identifier for reference</li>
+          <li><code>class</code> - Groups elements for CSS/JS</li>
+          <li><code>title</code> - Provides tooltip text on hover</li>
+          <li><code>style</code> - Inline CSS (use sparingly)</li>
+        </ul>
+        
+        <div class="example-title">Why Easy?</div>
+        <p>Think of attributes as "settings" for HTML elements—like adjusting the volume on a TV.</p>
+      </div>
+      
+      <h3>Examples</h3>
+      <div class="example">
+        <div class="example-title">Link Example</div>
+        <pre><code>&lt;a href="https://example.com" target="_blank" title="Opens in new tab"&gt;Visit Example&lt;/a&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <a href="#" onclick="return false;" target="_blank" title="Opens in new tab">Visit Example</a>
+          <p><strong>Attributes used:</strong></p>
+          <ul>
+            <li><code>href</code>: Specifies the URL</li>
+            <li><code>target="_blank"</code>: Opens in new window</li>
+            <li><code>title</code>: Shows text on hover</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="example">
+        <div class="example-title">Input Example</div>
+        <pre><code>&lt;input type="text" id="username" name="user" required placeholder="Enter username"&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <input type="text" id="username-demo" name="user" required placeholder="Enter username" disabled>
+          <p><strong>Attributes used:</strong></p>
+          <ul>
+            <li><code>type="text"</code>: Creates text input</li>
+            <li><code>id</code>: Links to label</li>
+            <li><code>name</code>: Identifies form data</li>
+            <li><code>required</code>: Makes field mandatory</li>
+            <li><code>placeholder</code>: Shows hint text</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lists Section -->
+    <section id="lists">
+      <h2>HTML Lists</h2>
+      <div class="note">
+        <p>Lists organize items in structured formats. HTML offers three main types: unordered (bullets), ordered (numbers/letters), and description (term-definition pairs).</p>
+      </div>
+      
+      <h3>Types of Lists</h3>
+      <div class="example">
+        <div class="example-title">1. Unordered Lists (&lt;ul&gt;)</div>
+        <p>For items with no specific order (e.g., shopping lists). Uses bullets by default.</p>
+        <pre><code>&lt;ul&gt;
+  &lt;li&gt;Apples&lt;/li&gt;
+  &lt;li&gt;Bananas&lt;/li&gt;
+  &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <ul style="margin-left: 20px;">
+            <li>Apples</li>
+            <li>Bananas</li>
+            <li>Oranges</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="example">
+        <div class="example-title">2. Ordered Lists (&lt;ol&gt;)</div>
+        <p>For sequential items (e.g., instructions). Uses numbers by default.</p>
+        <p><strong>Attributes:</strong></p>
+        <ul>
+          <li><code>type="1/A/a/i/I"</code> - Numbering style</li>
+          <li><code>start="n"</code> - Begin counting from n</li>
+          <li><code>reversed</code> - Counts backward</li>
+        </ul>
+        <pre><code>&lt;ol type="A" start="3"&gt;
+  &lt;li&gt;Preheat oven&lt;/li&gt;
+  &lt;li&gt;Mix ingredients&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <ol type="A" start="3" style="margin-left: 20px;">
+            <li>Preheat oven</li>
+            <li>Mix ingredients</li>
+          </ol>
+        </div>
+      </div>
+      
+      <div class="example">
+        <div class="example-title">3. Description Lists (&lt;dl&gt;)</div>
+        <p>For term-definition pairs (e.g., glossaries). Uses <code>&lt;dt&gt;</code> (term) and <code>&lt;dd&gt;</code> (definition).</p>
+        <pre><code>&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <dl>
+            <dt>HTML</dt>
+            <dd>HyperText Markup Language</dd>
+            <dt>CSS</dt>
+            <dd>Cascading Style Sheets</dd>
+          </dl>
+        </div>
+      </div>
+      
+      <h3>Nested Lists</h3>
+      <div class="example">
+        <p>Lists can be nested inside other lists to create hierarchies.</p>
+        <pre><code>&lt;ul&gt;
+  &lt;li&gt;Fruits
+    &lt;ul&gt;
+      &lt;li&gt;Apples&lt;/li&gt;
+      &lt;li&gt;Bananas&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Vegetables
+    &lt;ul&gt;
+      &lt;li&gt;Carrots&lt;/li&gt;
+      &lt;li&gt;Broccoli&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <ul style="margin-left: 20px;">
+            <li>Fruits
+              <ul style="margin-left: 20px;">
+                <li>Apples</li>
+                <li>Bananas</li>
+              </ul>
+            </li>
+            <li>Vegetables
+              <ul style="margin-left: 20px;">
+                <li>Carrots</li>
+                <li>Broccoli</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tables Section -->
+    <section id="tables">
+      <h2>HTML Tables</h2>
+      <div class="note">
+        <p>Tables display data in rows and columns. They should be used for tabular data, not for page layout.</p>
+      </div>
+      
+      <h3>Basic Table Structure</h3>
+      <div class="example">
+        <pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;John&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <table border="1" style="width: 100%;">
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+            </tr>
+            <tr>
+              <td>John</td>
+              <td>25</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+      <h3>Semantic Table Elements</h3>
+      <div class="example">
+        <p>For better accessibility and styling:</p>
+        <ul>
+          <li><code>&lt;thead&gt;</code> - Groups header content</li>
+          <li><code>&lt;tbody&gt;</code> - Groups body content</li>
+          <li><code>&lt;tfoot&gt;</code> - Groups footer content</li>
+          <li><code>&lt;caption&gt;</code> - Adds a table title</li>
+        </ul>
+        <pre><code>&lt;table&gt;
+  &lt;caption&gt;Monthly Sales&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Month&lt;/th&gt;&lt;th&gt;Sales&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;January&lt;/td&gt;&lt;td&gt;$1000&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td&gt;Total&lt;/td&gt;&lt;td&gt;$1000&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <table style="width: 100%; border-collapse: collapse;">
+            <caption>Monthly Sales</caption>
+            <thead>
+              <tr>
+                <th style="border: 1px solid #ddd; padding: 8px; background-color: #3498db; color: white;">Month</th>
+                <th style="border: 1px solid #ddd; padding: 8px; background-color: #3498db; color: white;">Sales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">January</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">$1000</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">Total</td>
+                <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">$1000</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      
+      <h3>Table Attributes</h3>
+      <div class="example">
+        <ul>
+          <li><code>colspan="n"</code> - Merge n columns</li>
+          <li><code>rowspan="n"</code> - Merge n rows</li>
+          <li><code>border</code> - Shows borders (CSS preferred)</li>
+        </ul>
+        <pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;Name&lt;/th&gt;
+    &lt;th colspan="2"&gt;Contact&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Email&lt;/th&gt;
+    &lt;th&gt;Phone&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <table border="1" style="width: 100%;">
+            <tr>
+              <th rowspan="2">Name</th>
+              <th colspan="2">Contact</th>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section id="forms">
+      <h2>HTML Forms</h2>
+      <div class="note">
+        <p>Forms collect user input for processing. The <code>&lt;form&gt;</code> element wraps inputs, and the <code>&lt;input&gt;</code> element creates various field types.</p>
+      </div>
+      
+      <h3>Basic Form Structure</h3>
+      <div class="example">
+        <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+  
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+  
+  &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <form action="#" method="post" onsubmit="return false;" style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;">
+            <label for="name-demo">Name:</label>
+            <input type="text" id="name-demo" name="name" required style="width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+            
+            <label for="email-demo">Email:</label>
+            <input type="email" id="email-demo" name="email" required style="width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+            
+            <input type="submit" value="Submit" style="background-color: #3498db; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
+          </form>
+        </div>
+      </div>
+      
+      <h3>Form Attributes</h3>
+      <div class="example">
+        <ul>
+          <li><code>action="url"</code> - Where to send form data</li>
+          <li><code>method="get/post"</code> - How to send data</li>
+          <li><code>autocomplete</code> - Enable/disable browser autofill</li>
+          <li><code>novalidate</code> - Skip browser validation</li>
+        </ul>
+      </div>
+      
+      <h3>Common Form Elements</h3>
+      <div class="example">
+        <ul>
+          <li><code>&lt;label&gt;</code> - Describes inputs (use <code>for="id"</code>)</li>
+          <li><code>&lt;input&gt;</code> - Various field types (see below)</li>
+          <li><code>&lt;select&gt;</code> - Dropdown menu</li>
+          <li><code>&lt;textarea&gt;</code> - Multi-line text</li>
+          <li><code>&lt;button&gt;</code> - Clickable button</li>
+          <li><code>&lt;fieldset&gt;</code> - Groups related inputs</li>
+          <li><code>&lt;legend&gt;</code> - Title for fieldset</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Input Types Section -->
+    <section id="inputs">
+      <h2>HTML Input Types</h2>
+      <div class="note">
+        <p>HTML5 introduced many input types that provide better user experience and validation. The <code>type</code> attribute defines the input behavior.</p>
+      </div>
+      
+      <h3>All Input Types with Examples</h3>
+      <div class="input-grid">
+        <!-- Text Inputs -->
+        <div class="input-item">
+          <h4>1. text</h4>
+          <p>Single-line text input</p>
+          <input type="text" placeholder="Enter text" disabled>
+          <pre><code>&lt;input type="text" name="text"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>2. password</h4>
+          <p>Masked characters for passwords</p>
+          <input type="password" placeholder="Password" disabled>
+          <pre><code>&lt;input type="password" name="pass"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>3. email</h4>
+          <p>Validates email format</p>
+          <input type="email" placeholder="user@example.com" disabled>
+          <pre><code>&lt;input type="email" name="email"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>4. number</h4>
+          <p>Numeric input with stepper</p>
+          <input type="number" min="1" max="10" disabled>
+          <pre><code>&lt;input type="number" min="1" max="10"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>5. tel</h4>
+          <p>Phone number input</p>
+          <input type="tel" placeholder="123-456-7890" disabled>
+          <pre><code>&lt;input type="tel" name="phone"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>6. url</h4>
+          <p>Validates URL format</p>
+          <input type="url" placeholder="https://example.com" disabled>
+          <pre><code>&lt;input type="url" name="website"&gt;</code></pre>
+        </div>
+        
+        <!-- Date/Time Inputs -->
+        <div class="input-item">
+          <h4>7. date</h4>
+          <p>Date picker</p>
+          <input type="date" disabled>
+          <pre><code>&lt;input type="date" name="bday"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>8. datetime-local</h4>
+          <p>Date and time without timezone</p>
+          <input type="datetime-local" disabled>
+          <pre><code>&lt;input type="datetime-local" name="event"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>9. month</h4>
+          <p>Month and year picker</p>
+          <input type="month" disabled>
+          <pre><code>&lt;input type="month" name="expiry"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>10. week</h4>
+          <p>Week number picker</p>
+          <input type="week" disabled>
+          <pre><code>&lt;input type="week" name="vacation"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>11. time</h4>
+          <p>Time picker</p>
+          <input type="time" disabled>
+          <pre><code>&lt;input type="time" name="appt"&gt;</code></pre>
+        </div>
+        
+        <!-- Selection Inputs -->
+        <div class="input-item">
+          <h4>12. checkbox</h4>
+          <p>Multiple selections</p>
+          <input type="checkbox" id="html" disabled> <label for="html">HTML</label>
+          <pre><code>&lt;input type="checkbox" id="html" name="skill" value="html"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>13. radio</h4>
+          <p>Single selection from options</p>
+          <input type="radio" id="male" name="gender" disabled> <label for="male">Male</label>
+          <pre><code>&lt;input type="radio" id="male" name="gender" value="male"&gt;</code></pre>
+        </div>
+        
+        <!-- File Input -->
+        <div class="input-item">
+          <h4>14. file</h4>
+          <p>File upload button</p>
+          <input type="file" disabled>
+          <pre><code>&lt;input type="file" name="upload"&gt;</code></pre>
+        </div>
+        
+        <!-- Button Inputs -->
+        <div class="input-item">
+          <h4>15. submit</h4>
+          <p>Form submission button</p>
+          <input type="submit" value="Submit" disabled>
+          <pre><code>&lt;input type="submit" value="Submit"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>16. reset</h4>
+          <p>Resets form fields</p>
+          <input type="reset" value="Reset" disabled>
+          <pre><code>&lt;input type="reset" value="Reset"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>17. button</h4>
+          <p>Custom clickable button</p>
+          <input type="button" value="Click Me" disabled>
+          <pre><code>&lt;input type="button" value="Click Me"&gt;</code></pre>
+        </div>
+        
+        <!-- Other Inputs -->
+        <div class="input-item">
+          <h4>18. hidden</h4>
+          <p>Invisible data storage</p>
+          <input type="hidden" name="user_id" value="123">
+          <pre><code>&lt;input type="hidden" name="user_id" value="123"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>19. search</h4>
+          <p>Search field (may show clear button)</p>
+          <input type="search" placeholder="Search..." disabled>
+          <pre><code>&lt;input type="search" name="query"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>20. range</h4>
+          <p>Slider control</p>
+          <input type="range" min="0" max="100" disabled>
+          <pre><code>&lt;input type="range" min="0" max="100"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>21. color</h4>
+          <p>Color picker</p>
+          <input type="color" disabled>
+          <pre><code>&lt;input type="color" name="bgcolor"&gt;</code></pre>
+        </div>
+        
+        <div class="input-item">
+          <h4>22. image</h4>
+          <p>Image as submit button</p>
+          <input type="image" src="https://via.placeholder.com/50" alt="Submit" disabled>
+          <pre><code>&lt;input type="image" src="submit.png" alt="Submit"&gt;</code></pre>
+        </div>
+      </div>
+      
+      <h3>Complete Form Example</h3>
+      <div class="example">
+        <pre><code>&lt;form action="/register" method="post"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Registration Form&lt;/legend&gt;
+    
+    &lt;label for="username"&gt;Username:&lt;/label&gt;
+    &lt;input type="text" id="username" name="username" required&gt;
+    
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+    
+    &lt;label for="birthday"&gt;Birthday:&lt;/label&gt;
+    &lt;input type="date" id="birthday" name="birthday"&gt;
+    
+    &lt;label&gt;Gender:&lt;/label&gt;
+    &lt;input type="radio" id="male" name="gender" value="male"&gt;
+    &lt;label for="male"&gt;Male&lt;/label&gt;
+    &lt;input type="radio" id="female" name="gender" value="female"&gt;
+    &lt;label for="female"&gt;Female&lt;/label&gt;
+    
+    &lt;label for="interests"&gt;Interests:&lt;/label&gt;
+    &lt;select id="interests" name="interests" multiple&gt;
+      &lt;option value="sports"&gt;Sports&lt;/option&gt;
+      &lt;option value="music"&gt;Music&lt;/option&gt;
+    &lt;/select&gt;
+    
+    &lt;label for="comments"&gt;Comments:&lt;/label&gt;
+    &lt;textarea id="comments" name="comments"&gt;&lt;/textarea&gt;
+    
+    &lt;input type="submit" value="Register"&gt;
+    &lt;input type="reset" value="Clear"&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+        <div class="output">
+          <div class="output-title">Output:</div>
+          <form action="#" method="post" onsubmit="return false;" style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+            <fieldset style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+              <legend style="padding: 0 10px; font-weight: bold;">Registration Form</legend>
+              
+              <label for="username-demo2">Username:</label>
+              <input type="text" id="username-demo2" name="username" required style="width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+              
+              <label for="email-demo2">Email:</label>
+              <input type="email" id="email-demo2" name="email" required style="width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+              
+              <label for="birthday-demo">Birthday:</label>
+              <input type="date" id="birthday-demo" name="birthday" style="width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+              
+              <div style="margin: 15px 0;">
+                <label style="display: block; margin-bottom: 5px;">Gender:</label>
+                <input type="radio" id="male-demo" name="gender-demo" value="male" disabled>
+                <label for="male-demo" style="margin-right: 15px;">Male</label>
+                <input type="radio" id="female-demo" name="gender-demo" value="female" disabled>
+                <label for="female-demo">Female</label>
+              </div>
+              
+              <label for="interests-demo">Interests:</label>
+              <select id="interests-demo" name="interests" multiple style="width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;" disabled>
+                <option value="sports">Sports</option>
+                <option value="music">Music</option>
+              </select>
+              
+              <label for="comments-demo">Comments:</label>
+              <textarea id="comments-demo" name="comments" style="width: 100%; padding: 8px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; min-height: 100px;" disabled></textarea>
+              
+              <input type="submit" value="Register" style="background-color: #3498db; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">
+              <input type="reset" value="Clear" style="background-color: #e74c3c; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>HTML Comprehensive Guide &copy; 2025</p>
+    <address>
+      Created for educational purposes | 
+      <a href="mailto:a.akrambasha123@gmail.com" style="color: white;">a.akrambasha123@gmail.com</a>
+    </address>
+  </footer>
+</body>
+</html>
